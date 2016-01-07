@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <jansson.h>
+#include <string.h>
 
 int isWhite( const char *name, char *bl[], int num )
 {
