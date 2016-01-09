@@ -5,9 +5,7 @@ int main ()
 {
 	json_t *units, *current_unit, *stats, *targetArea;
 	json_error_t error;
-	size_t size;
-	const char *unitname, *keyname, *weaponname;
-	int b;
+	const char *unitname;
 
 	units = json_load_file ("./BattleAbilities.json", 0, &error);
 	if (!units) {
@@ -15,7 +13,7 @@ int main ()
 		printf ("load error \n");
 		exit (1);
 	}
-	printf ("proceeding %d ablilities...\n", json_object_size (units));
+	printf ("proceeding %d ablilities...\n", (int)json_object_size (units));
 
 	json_object_foreach (units, unitname, current_unit) {
 
@@ -24,7 +22,7 @@ int main ()
 		stats = json_object_get (current_unit, "stats");
 		if (stats) {
 			targetArea = json_object_get (stats, "targetArea");
-			if (targetArea) 
+			if (targetArea)
 				json_object_set(targetArea, "aoeOrderDelay", json_real (0.0));
 		}else
 			printf ("get targetArea error\n");

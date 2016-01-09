@@ -26,6 +26,7 @@ main()
 	const char     *unitname, *weaponname;
 	int		progress  , laststep, spawnable;
 	char           *blacklist[] = {
+	
 		/*
 		 * "veh_tank_chem_heavy",    // heavy chem tank
 		 * "veh_tank_plasma", "veh_artillery_mega",
@@ -100,7 +101,7 @@ main()
 	json_object_foreach(units, unitname, current_unit) {
 
 		progress++;
-		if ((progress - laststep) >= size / 10) {
+		if ((progress - laststep) >= (int)size / 10) {
 			//printf("ooo");
 			laststep = progress;
 		}
